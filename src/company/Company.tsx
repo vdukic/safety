@@ -68,43 +68,45 @@ const CompanyTable: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <h1 style={{ textAlign: "center", marginBottom: 20 }}>Companies</h1>
-      <div style={{ display: "flex", justifyContent: "right", marginBottom: 20 }}>
-        <Button variant="contained" color="primary" size="medium" onClick={handleAdd}>
-          Add
-        </Button>
-      </div>
+    <>
+      <div className="container">
+        <h1 style={{ textAlign: "center", marginBottom: 20 }}>Companies</h1>
+        <div style={{ display: "flex", justifyContent: "right", marginBottom: 20 }}>
+          <Button variant="contained" color="primary" size="medium" onClick={handleAdd}>
+            Add
+          </Button>
+        </div>
 
-      <AddCompanyDialog
-        open={open}
-        newCompany={newCompany}
-        onChange={handleDialogChange}
-        onClose={handleDialogClose}
-        onSave={handleDialogSave}
-      />
+        <AddCompanyDialog
+          open={open}
+          newCompany={newCompany}
+          onChange={handleDialogChange}
+          onClose={handleDialogClose}
+          onSave={handleDialogSave}
+        />
 
-      <TableContainer component={Paper} className="table-wrapper">
-        <Table className="company-table">
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ width: "40%" }}>Company</TableCell>
-              <TableCell style={{ width: "25%" }}>PIB</TableCell>
-              <TableCell style={{ width: "35%" }}>Address</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {companies.map((c) => (
-              <TableRow key={c.id} hover onDoubleClick={() => handleRowDoubleClick(c)}>
-                <TableCell>{c.name}</TableCell>
-                <TableCell>{c.pib}</TableCell>
-                <TableCell>{c.address}</TableCell>
+        <TableContainer component={Paper} className="table-wrapper">
+          <Table className="company-table">
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ width: "40%" }}>Company</TableCell>
+                <TableCell style={{ width: "25%" }}>PIB</TableCell>
+                <TableCell style={{ width: "35%" }}>Address</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+            </TableHead>
+            <TableBody>
+              {companies.map((c) => (
+                <TableRow key={c.id} hover onDoubleClick={() => handleRowDoubleClick(c)}>
+                  <TableCell>{c.name}</TableCell>
+                  <TableCell>{c.pib}</TableCell>
+                  <TableCell>{c.address}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </>
   );
 };
 
